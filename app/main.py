@@ -67,8 +67,6 @@ def main():
             '//*[@id="reactRoot"]/div[1]/div/div[3]/div[3]/div/div/div[1]/div[1]/button'
         )
 
-        send_informational_message(browser_manager.driver, tme_xpath, tef_xpath, backlog_xpath)
-
         logger.info("Monitoramento de falhas iniciado")
         monitor_falhas(browser_manager.driver, tme_xpath, tef_xpath, backlog_xpath)
         
