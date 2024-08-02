@@ -14,10 +14,7 @@ def send_telegram_message(message):
     telegram_token = os.getenv('TELEGRAM_TOKEN', '7226155746:AAEBPeOtzJrD_KQyeZinNBjh5HMmvHTBZLs')
     chat_id = os.getenv('TELEGRAM_CHAT_ID', '-1002165188451')
     url = f'https://api.telegram.org/bot{telegram_token}/sendMessage'
-    payload = {'chat_id': chat_id, 'text': message, 'parse_mode': 'Markdown',}
-
-    # Imprima a mensagem para verificação
-    logging.info(f"Enviando mensagem: {message}")
+    payload = {'chat_id': chat_id, 'text': message, 'parse_mode': 'Markdown'}
     
     try:
         response = requests.post(url, data=payload)
@@ -58,7 +55,7 @@ def send_informational_message(driver, tme_xpath, tef_xpath, backlog_xpath):
             f'❌*Falha de sistema:* {count_system_failure} ({percent_system_failure:.2f}%)\n\n'
             f'⏱*Tempo médio de execução:* {tme_xpath}\n'
             f'⏱*Tempo de fila:* {tef_xpath}\n\n'
-            f'🌐*Link para mais detalhes*: https://e-bots.co/grafana/goto/7_gx35rIg?orgId=1\n\n'
+            f'🌐*Link para mais detalhes*: https://e-bots.co/grafana/goto/TyAamt9Ig?orgId=1\n\n'
             f'🔰 Informacional desenv. - Projetos Tahto Aut/IA 🔰'
         )
         send_telegram_message(message)
