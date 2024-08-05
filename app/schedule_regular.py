@@ -1,15 +1,18 @@
-import schedule
 import logging
+
+import schedule
 from send_telegram_msg import send_informational_message
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger()
 
+
 def schedule_for_day(day, times, func, *args):
     for time in times:
-        logger.info(f"Agendando tarefa para {day} às {time}")
+        logger.info(f'Agendando tarefa para {day} às {time}')
         getattr(schedule.every(), day).at(time).do(func, *args)
+
 
 def schedule_regular_collections(driver, tme_xpath, tef_xpath, backlog_xpath):
     schedule_dict = {
@@ -21,5 +24,13 @@ def schedule_regular_collections(driver, tme_xpath, tef_xpath, backlog_xpath):
         'saturday': ['09:05', '12:05', '15:55'],
     }
     for day, times in schedule_dict.items():
-        schedule_for_day(day, times, send_informational_message, driver, tme_xpath, tef_xpath, backlog_xpath)
-    logger.info("Tarefas de agendamento configuradas")
+        schedule_for_day(
+            day,
+            times,
+            send_informational_message,
+            driver,
+            tme_xpath,
+            tef_xpath,
+            backlog_xpath,
+        )
+    logger.info('Tarefas de agendamento configuradas')
