@@ -41,10 +41,11 @@ def send_informational_message(driver, tme_xpath, tef_xpath, backlog_xpath):
             os.path.join(download_path, 'relatorio.csv')
         )
         metrics = data_processor.analyze_data()
+        print(metrics)
 
         if metrics == 'no_data':
             message = (
-                f'🤖 *Automação PAP - MVP1*\n{datetime.date.today().strftime("%d/%m/%Y")}\n\n'
+                f'🤖 *Automação PAP - MVP2*\n{datetime.date.today().strftime("%d/%m/%Y")}\n\n'
                 '⚠️Robô Ocioso (Sem Dados)'
             )
             send_telegram_message(message)
@@ -72,7 +73,7 @@ def send_informational_message(driver, tme_xpath, tef_xpath, backlog_xpath):
             ) = percent_system_failure = 0
 
         message = (
-            f'🤖 *Automação PAP - MVP1*\n{datetime.date.today().strftime("%d/%m/%Y")}\n\n'
+            f'🤖 *Automação PAP - MVP2*\n{datetime.date.today().strftime("%d/%m/%Y")}\n\n'
             f'*Status do robô*: Operando ✅\n\n'
             f'📓*Informacional até {datetime.datetime.now().strftime("%Hh%M")}*\n'
             f'🗂*Backlog*: {backlog_xpath}\n'

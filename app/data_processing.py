@@ -8,6 +8,7 @@ class DataProcessor:
 
     def analyze_data(self):
         df = pd.read_csv(self.file_path, sep=',', skiprows=1)
+        print(df)
         if df.empty:
             return 'no_data'
 
