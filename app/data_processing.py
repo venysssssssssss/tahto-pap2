@@ -8,6 +8,9 @@ class DataProcessor:
 
     def analyze_data(self):
         df = pd.read_csv(self.file_path, sep=',', skiprows=1)
+        if df.empty:
+            return 'no_data'
+
         if 'Status' not in df.columns:
             df.columns = (
                 df.columns.str.strip()
@@ -16,7 +19,11 @@ class DataProcessor:
                 raise ValueError(
                     "The 'Status' column is not present in the CSV file."
                 )
+
         df = df[df['P'] == 1]
+        if df.empty:
+            return 'no_data'
+
         falha_detectada = self.apply_business_rules(df)
 
         con = duckdb.connect(database=':memory:')
