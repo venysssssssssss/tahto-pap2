@@ -5,10 +5,8 @@ import time
 from action_manager import ActionManager
 from authentication import Authenticator
 from browser import BrowserManager
-from data_processing import DataProcessor
 from monitor_falhas import monitor_falhas
 from selenium.webdriver.common.by import By
-from send_telegram_msg import send_informational_message
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -81,7 +79,6 @@ def main():
         )
 
     finally:
-        browser_manager.quit_browser()
         logger.info('Finalizando o script principal')
 
 

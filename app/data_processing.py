@@ -1,5 +1,6 @@
 import duckdb
 import pandas as pd
+import time
 
 
 class DataProcessor:
@@ -49,10 +50,7 @@ class DataProcessor:
         }
 
     def apply_business_rules(self, df):
-        for row in range(min(3, len(df))):
-            if (
-                df.iloc[row]['Item'] == 'ValidarVendasLiberadas'
-                and df.iloc[row]['Status'] == 'Falha de sistema'
-            ):
+        for row in range(1, min(4, len(df))):
+            if df.iloc[row]['Item'] == 'ValidarVendasLiberadas' and df.iloc[row]['Status'] == 'Falha de sistema':
                 return True
         return False
